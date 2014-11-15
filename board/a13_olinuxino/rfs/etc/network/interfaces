@@ -1,0 +1,29 @@
+# Configure Loopback
+# ------------------
+
+#
+# loopback
+#
+
+auto lo
+iface lo inet loopback
+
+#
+# wireless
+#
+
+# dynamic
+# auto wlan0
+# iface wlan0 inet dhcp
+# pre-up wpa_supplicant -B -Dwext -iwlan0 -c/etc/wpa_supplicant.conf
+# post-down killall -q wpa_supplicant
+
+# static
+auto wlan0
+iface wlan0 inet static
+        pre-up wpa_supplicant -B -Dwext -iwlan0 -c/etc/wpa_supplicant.conf -d
+        address 192.168.1.33
+        gateway 192.168.1.1
+        netmask 255.255.255.0
+        network 192.168.1.0
+        broadcast 192.168.1.255

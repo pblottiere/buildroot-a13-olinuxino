@@ -12,6 +12,7 @@ UBOOT_SUNXI_LICENSE_FILES = COPYING
 UBOOT_SUNXI_INSTALL_IMAGES = YES
 
 UBOOT_SUNXI_SITE    = $(call qstrip,$(BR2_TARGET_UBOOT_SUNXI_GITHUB_LOCATION))
+UBOOT_SUNXI_SITE_METHOD = git
 
 ifeq ($(BR2_TARGET_UBOOT_SUNXI_FORMAT_KWB),y)
 UBOOT_SUNXI_BIN          = u-boot.kwb
@@ -61,7 +62,7 @@ endif
 define UBOOT_SUNXI_CONFIGURE_CMDS
     $(TARGET_CONFIGURE_OPTS) $(UBOOT_SUNXI_CONFIGURE_OPTS)  \
         $(MAKE) -C $(@D) $(UBOOT_SUNXI_MAKE_OPTS)       \
-        $(UBOOT_SUNXI_BOARD_NAME)
+        $(UBOOT_SUNXI_BOARD_NAME)_config
     @echo >> $(@D)/include/config.h
     @echo "/* Add a wrapper around the values Buildroot sets. */" >> $(@D)/include/config.h
     @echo "#ifndef __BR2_ADDED_CONFIG_H" >> $(@D)/include/config.h

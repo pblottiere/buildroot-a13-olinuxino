@@ -2,49 +2,41 @@
 #--------
 
 BOARD_DIR="$(dirname $0)"
-BOOT=$TARGET_DIR/boot/
 
-cp -v $BOARD_DIR/script.bin $BOOT
+#
+# BASIC CONF
+#
 
-if [ -e $BINARIES_DIR/u-boot.bin ];
+# bootloader
+cp -v $BOARD_DIR/script.bin $BINARIES_DIR
+cp $BASE_DIR/build/uboot-sunxi-3f5ff92/u-boot-sunxi-with-spl.bin $BINARIES_DIR
+
+# rfs
+if [ -e $BOARD_DIR/rfs/etc/wpa_supplicant.conf ];
 then
-
-	cp $BINARIES_DIR/u-boot.bin $BOOT
-
+	cp $BOARD_DIR/rfs/etc/wpa_supplicant.conf $TARGET_DIR/etc/wpa_supplicant.conf
 fi
 
-if [ -e $BINARIES_DIR/sunxi-spl.bin ];
+if [ -e $BOARD_DIR/rfs/etc/modprobe.conf ];
 then
-
-	cp $BINARIES_DIR/sunxi-spl.bin $BOOT
-
+	cp $BOARD_DIR/rfs/etc/modprobe.conf $TARGET_DIR/etc/modprobe.conf
 fi
 
-if [ -e $BOARD_DIR/wpa_supplicant.conf ];
+if [ -e $BOARD_DIR/rfs/etc/modprobe.d/8192cu.conf ];
 then
-
-	cp $BOARD_DIR/wpa_supplicant.conf $TARGET_DIR/etc/wpa_supplicant.conf
-
+	mkdir -p $TARGET_DIR/etc/modprobe.d
+	cp $BOARD_DIR/rfs/etc/modprobe.d/8192cu.conf $TARGET_DIR/etc/modprobe.d
 fi
 
-
-if [ -e $BOARD_DIR/modprobe.conf ];
+if [ -e $BOARD_DIR/rfs/etc/network/interfaces ];
 then
-
-	cp $BOARD_DIR/modprobe.conf $TARGET_DIR/etc/modprobe.conf
-
+	cp $BOARD_DIR/rfs/etc/network/interfaces $TARGET_DIR/etc/network/interfaces
 fi
 
-if [ -e $BOARD_DIR/inerfaces ];
-then
+#
+# SERVER CONF
+#
 
-	cp $BOARD_DIR/interfaces $TARGET_DIR/etc/network/interfaces
-
-fi
-
-if [ -e $BOARD_DIR/wpa_supplicant.conf ];
-then
-
-	cp $BOARD_DIR/wpa_supplicant.conf $TARGET_DIR/etc/wpa_supplicant.conf
-
-fi
+# auto mount disk
+#mkdir $TARGET_DIR/mnt/disk
+#echo "/dev/uba1    /mnt/disk    ntfs-3g    1    1" >> $TARGET_DIR/etc/fstab

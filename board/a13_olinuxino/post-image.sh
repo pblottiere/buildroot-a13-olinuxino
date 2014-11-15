@@ -2,13 +2,12 @@
 #--------
 
 BOARD_DIR="$(dirname $0)"
-BOOT=$TARGET_DIR/boot/
 
 echo ===
 echo
-echo To create sd image type command:
+echo To install binaries on SD card:
 echo
-echo sudo $BOARD_DIR/make-sdimg.sh $BINARIES_DIR/rootfs.tar 60 $BINARIES_DIR
+echo sudo $BOARD_DIR/build-sdcard.sh $BINARIES_DIR 'sd_node'
 echo 
 echo ===
 
