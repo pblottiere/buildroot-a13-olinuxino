@@ -1,0 +1,12 @@
+config BR2_PACKAGE_HOST_SUNXI_TOOLS
+    depends on BR2_cortex_a8
+	bool "host sunxi-tools"
+	help
+	  Sunxi-tools is the host side implementation providing fex2bin and 
+	  bin2fex binaries.
+
+if BR2_PACKAGE_HOST_SUNXI_TOOLS
+config BR2_PACKAGE_HOST_SUNXI_TOOLS_GITHUB_LOCATION
+  string "Link to github of Sunxi-tools"
+
+endif #  BR2_PACKAGE_HOST_SUNXI_TOOLS
