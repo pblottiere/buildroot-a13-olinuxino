@@ -10,5 +10,3 @@ echo
 echo sudo $BOARD_DIR/build-sdcard.sh $BINARIES_DIR 'sd_node'
 echo 
 echo ===
-
-

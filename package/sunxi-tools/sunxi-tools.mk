@@ -11,12 +11,13 @@ HOST_SUNXI_TOOLS_DEPENDENCIES = host-libusb
 
 define HOST_SUNXI_TOOLS_BUILD_CMDS
         cd $(@D) ; \
-		make
+	make
 endef
 
 define HOST_SUNXI_TOOLS_INSTALL_CMDS
         $(INSTALL) -D $(@D)/fex2bin $(HOST_DIR)/usr/bin/
         $(INSTALL) -D $(@D)/bin2fex $(HOST_DIR)/usr/bin/
+	$(HOST_DIR)/usr/bin/fex2bin $(BR2_PACKAGE_SUNXI_TOOLS_FEXFILE) > $(BINARIES_DIR)/script.bin
 endef
 
 define HOST_SUNXI_UNINSTALL_CMDS

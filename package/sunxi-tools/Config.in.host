@@ -7,6 +7,11 @@ config BR2_PACKAGE_HOST_SUNXI_TOOLS
 
 if BR2_PACKAGE_HOST_SUNXI_TOOLS
 config BR2_PACKAGE_HOST_SUNXI_TOOLS_GITHUB_LOCATION
-  string "Link to github of Sunxi-tools"
+    string "Link to github of Sunxi-tools"
+    default "https://github.com/linux-sunxi/sunxi-tools"
+
+config BR2_PACKAGE_SUNXI_TOOLS_FEXFILE
+    string "Fexfile"
+    default "board/a13_olinuxino/olinuxino_LCD_800x480.fex"
 
 endif #  BR2_PACKAGE_HOST_SUNXI_TOOLS

@@ -8,7 +8,6 @@ BOARD_DIR="$(dirname $0)"
 #
 
 # bootloader
-cp -v $BOARD_DIR/script.bin $BINARIES_DIR
 cp $BASE_DIR/build/uboot-sunxi-3f5ff92/u-boot-sunxi-with-spl.bin $BINARIES_DIR
 
 # rfs
