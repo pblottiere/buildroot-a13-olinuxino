@@ -1,0 +1,64 @@
+diff -s -p0 domoticz-2313/CMakeLists.txt domoticz-2313-patched/CMakeLists.txt
+*** domoticz-2313/CMakeLists.txt	2015-03-12 12:04:22.742144823 +0100
+--- domoticz-2313-patched/CMakeLists.txt	2015-03-12 12:09:13.095584596 +0100
+*************** unset(Boost_LIBRARY_DIRS CACHE)
+*** 266 ****
+! find_package(Boost REQUIRED COMPONENTS thread date_time system)
+--- 266 ----
+! find_package(Boost REQUIRED COMPONENTS thread date_time system chrono)
+Les sous-répertoires domoticz-2313/Config et domoticz-2313-patched/Config sont identiques
+Les sous-répertoires domoticz-2313/curl et domoticz-2313-patched/curl sont identiques
+Les fichiers domoticz-2313/domoticz.sh et domoticz-2313-patched/domoticz.sh sont identiques
+diff -s -p0 domoticz-2313/getsvn.cmake domoticz-2313-patched/getsvn.cmake
+*** domoticz-2313/getsvn.cmake	2015-03-12 12:04:22.742144823 +0100
+--- domoticz-2313-patched/getsvn.cmake	2015-03-12 19:53:46.413800945 +0100
+***************
+*** 1,10 ****
+- # the FindSubversion.cmake module is part of the standard distribution
+- include(FindSubversion)
+- # extract working copy information for SOURCE_DIR into MY_XXX variables
+- if(SOURCE_DIR MATCHES -r[0-9]+$)
+-     STRING(REGEX REPLACE "^.*-r([0-9]+$)"
+-       "\\1" MY_WC_REVISION "${SOURCE_DIR}")
+- endif()
+- if (NOT MY_WC_REVISION)
+-     Subversion_WC_INFO(${SOURCE_DIR} MY)
+- endif()
+--- 0 ----
+*************** endif()
+*** 12,16 ****
+! file(WRITE svnversion.h.txt "#define SVNVERSION ${MY_WC_REVISION}\n")
+! # copy the file to the final header only if the version changes
+! # reduces needless rebuilds
+! execute_process(COMMAND ${CMAKE_COMMAND} -E copy_if_different
+!                         svnversion.h.txt svnversion.h)
+--- 2 ----
+! file(WRITE svnversion.h "#define SVNVERSION 2313\n")
+Les sous-répertoires domoticz-2313/hardware et domoticz-2313-patched/hardware sont identiques
+Les fichiers domoticz-2313/History.txt et domoticz-2313-patched/History.txt sont identiques
+Les sous-répertoires domoticz-2313/httpclient et domoticz-2313-patched/httpclient sont identiques
+Les fichiers domoticz-2313/INSTALL.txt et domoticz-2313-patched/INSTALL.txt sont identiques
+Les sous-répertoires domoticz-2313/json et domoticz-2313-patched/json sont identiques
+Les sous-répertoires domoticz-2313/libusb et domoticz-2313-patched/libusb sont identiques
+Les fichiers domoticz-2313/License.txt et domoticz-2313-patched/License.txt sont identiques
+Les sous-répertoires domoticz-2313/lua et domoticz-2313-patched/lua sont identiques
+Les sous-répertoires domoticz-2313/main et domoticz-2313-patched/main sont identiques
+Les fichiers domoticz-2313/makebeta et domoticz-2313-patched/makebeta sont identiques
+Les fichiers domoticz-2313/makerelease et domoticz-2313-patched/makerelease sont identiques
+Les sous-répertoires domoticz-2313/Manual et domoticz-2313-patched/Manual sont identiques
+Les sous-répertoires domoticz-2313/MQTT et domoticz-2313-patched/MQTT sont identiques
+Les sous-répertoires domoticz-2313/msbuild et domoticz-2313-patched/msbuild sont identiques
+Les fichiers domoticz-2313/README.md et domoticz-2313-patched/README.md sont identiques
+Les sous-répertoires domoticz-2313/scripts et domoticz-2313-patched/scripts sont identiques
+Les fichiers domoticz-2313/server_cert.pem et domoticz-2313-patched/server_cert.pem sont identiques
+Les sous-répertoires domoticz-2313/smtpclient et domoticz-2313-patched/smtpclient sont identiques
+Les sous-répertoires domoticz-2313/sqlite et domoticz-2313-patched/sqlite sont identiques
+Les sous-répertoires domoticz-2313/.svn et domoticz-2313-patched/.svn sont identiques
+Les fichiers domoticz-2313/svntemplate.txt et domoticz-2313-patched/svntemplate.txt sont identiques
+Les sous-répertoires domoticz-2313/tcpserver et domoticz-2313-patched/tcpserver sont identiques
+Les sous-répertoires domoticz-2313/tools et domoticz-2313-patched/tools sont identiques
+Les fichiers domoticz-2313/updatedomo et domoticz-2313-patched/updatedomo sont identiques
+Les sous-répertoires domoticz-2313/webserver et domoticz-2313-patched/webserver sont identiques
+Les sous-répertoires domoticz-2313/www et domoticz-2313-patched/www sont identiques
+Les sous-répertoires domoticz-2313/zip et domoticz-2313-patched/zip sont identiques
+Les sous-répertoires domoticz-2313/zlib et domoticz-2313-patched/zlib sont identiques

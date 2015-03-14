@@ -608,6 +608,7 @@ endmenu
 
 menu "Miscellaneous"
 source "package/collectd/Config.in"
+source "package/domoticz/Config.in"
 source "package/empty/Config.in"
 source "package/googlefontdirectory/Config.in"
 source "package/mcrypt/Config.in"
