@@ -1,0 +1,32 @@
+#! /bin/sh
+
+DOMO_NAME=domoticz
+DOMO_BIN=/opt/domoticz/$DOMO_NAME
+
+case "$1" in
+    start)
+        echo "Starting $DOMO_NAME."
+	if [ -f $DOMO_BIN ]; then
+ 
+		$DOMO_BIN &
+		echo "$DOMO_NAME started !"
+ 
+	elif [ -f $DOMO_BIN ]; then
+ 
+		$DOMO_BIN &
+		echo "$DOMO_NAME started !"
+ 
+	else
+		echo "$DOMO_NAME n'est pas installé !"
+	fi
+    ;;
+    stop)
+        echo -n "Shutting down $DOMO_NAME."
+        #killproc -TERM /usr/bin/noip2
+        killall $DOMO_NAME
+    ;;
+    *)
+        echo "Usage: $0 {start|stop}"
+        exit 1
+esac
+exit 0
